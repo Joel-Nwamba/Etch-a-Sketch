@@ -1,3 +1,24 @@
-/* body {
-    background-color: blue;
-} */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: coral;
+    width: 600px;
+    height: 600px;
+    margin-top: 100px;
+
+}
+
+
+
+.square:hover {
+    cursor: pointer;
+    color:blueviolet;
+    
+}
