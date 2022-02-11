@@ -9,16 +9,28 @@ body {
     display: flex;
     flex-wrap: wrap;
     background-color: coral;
-    width: 600px;
-    height: 600px;
+    width: 640px;
+    height: 656px;
     margin-top: 100px;
 
 }
 
+.square {
+    color: aqua;
+    background-color: #fff;
+    /* width: 900px;
+    height: 800px; */
+}
 
 
+/* 
 .square:hover {
     cursor: pointer;
     color:blueviolet;
+    font-size: 35px;
     
+} */
+
+.my-color-class {
+    background-color: aqua;
 }
