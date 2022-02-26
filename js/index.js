@@ -1,33 +1,48 @@
 const container = document.getElementById("container");
 const clearButton = document.getElementById("clear-grid");
-const size = document.getElementById("size");
+const changeSize = document.getElementById("size");
 let row = 16;
 let col = 16;
 
-
-
 // create a grid 
-function createGrid() {
-    for(let i=0; i < (row * col); i++) {
-        const grid = document.createElement("div");
-        grid.addEventListener("mouseover", function(e) {
-            e.target.classList.add("square");
-        })
-        grid.style.width = "30px";
-        grid.style.height="25px";
-        container.appendChild(grid);
-        clearButton.addEventListener("click", function() {
-            grid.classList.remove("square")
-        });
+function generateGrid() {
+    let size
+    if(size > 100) {
+        alert("maximum is 100")
+        size = 100;
+    }
+    for(let i=0; i < row; i++) {
+        const rowcol = document.createElement("div");
+        rowcol.classList.add("row")
+            for(let i = 0; i < col; i++) {
+                const square = document.createElement("div");
+                square.setAttribute("class", "square");
+                square.addEventListener("mouseover", () => {
+                        square.style.backgroundColor = "black";
+                    })
+                clearButton.addEventListener("click", function() {
+                    square.style.backgroundColor = "white";
+                })
+                // square.style.width = "30px"
+                // square.style.height = "28px"
+                rowcol.appendChild(square)
+            }
+            container.appendChild(rowcol)
     }
 }
 
-createGrid();
-let prompUser=
-size.addEventListener("click", function() {
-   prompUser=prompt("Choose between 1-100");
-   
+function getNewSize() {
+    let usersChoice = prompt("What size would you like to go with");
+    if(parseInt(usersChoice) > 100) {
+        return 100;
+    } else {
+        return parseInt(usersChoice);
+    }
+}
 
 
-})
+
+generateGrid()
+
+
 
