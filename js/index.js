@@ -1,20 +1,18 @@
 const container = document.getElementById("container");
 const clearButton = document.getElementById("clear-grid");
 const changeSize = document.getElementById("size");
-let row = 16;
-let col = 16;
-
+let sizeLength = 16;
+// let row = 16;
+// let col = 16;
+container.style.gridTemplateColumns = (`repeat( ${sizeLength}, 1fr)`)
 // create a grid 
-function generateGrid() {
-    let size
-    if(size > 100) {
-        alert("maximum is 100")
-        size = 100;
-    }
-    for(let i=0; i < row; i++) {
+function generateGrid(size) {
+    getNewSize() 
+//    newFunction();
+    for(let i=0; i < size; i++) {
         const rowcol = document.createElement("div");
         rowcol.classList.add("row")
-            for(let i = 0; i < col; i++) {
+            for(let i = 0; i < size; i++) {
                 const square = document.createElement("div");
                 square.setAttribute("class", "square");
                 square.addEventListener("mouseover", () => {
@@ -29,20 +27,34 @@ function generateGrid() {
             }
             container.appendChild(rowcol)
     }
-}
 
-function getNewSize() {
-    let usersChoice = prompt("What size would you like to go with");
-    if(parseInt(usersChoice) > 100) {
-        return 100;
-    } else {
-        return parseInt(usersChoice);
+    function getNewSize() {
+        let sizeLength;
+        if (size > 100) {
+            alert("Maximum is the number 100");
+            sizeLength = 100;
+        } else {
+            sizeLength = size;
+        }
     }
 }
 
+// function getNewSize() {
+//     changeSize.addEventListener("click", function() {
+//         let usersChoice = prompt("What size would you like to go with");
+//         if(parseInt(usersChoice) > 100) {
+//             return 100;
+//         } else {
+//             return parseInt(usersChoice);
+//         }
+//     })
+// }
+
+// let size = getNewSize()
 
 
-generateGrid()
+
+generateGrid(16)
 
 
 
