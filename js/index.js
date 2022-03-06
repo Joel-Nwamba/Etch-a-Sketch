@@ -1,16 +1,12 @@
 const container = document.getElementById("container");
 const clearButton = document.getElementById("clear-grid");
 const changeSize = document.getElementById("size");
-let sizeGrid = 16;
+const square = document.createElement("div");
 // let row = 16;
 // let col = 16;
-container.style.gridTemplateColumns = (`repeat( ${sizeLength}, 1fr)`)
+// container.style.gridTemplateColumns = (`repeat( ${sizeLength}, 1fr)`)
 // create a grid 
 function generateGrid(size) {
-    if (size > 100) {
-        window.alert("100 is the max height");
-         sizeGrid = 100;
-    }
     for(let i=0; i < size; i++) {
         const rowcol = document.createElement("div");
         rowcol.classList.add("row")
@@ -22,9 +18,14 @@ function generateGrid(size) {
                     })
                 clearButton.addEventListener("click", function() {
                     square.style.backgroundColor = "white";
+                    // let usersInput = prompt(`"How many squares per side you'd like for the new grid? (max:64)"`);
+                    // if(usersInput > 64) {
+                    //     alert("Please enter a lesser number.")
+                    // } else {
+                    //     return size;
+                    // }
                 })
-                // square.style.width = "30px"
-                // square.style.height = "28px"
+                
                 rowcol.appendChild(square)
             }
             container.appendChild(rowcol)
@@ -32,8 +33,21 @@ function generateGrid(size) {
 
 }
 
-function chooseGridSize() {
-    
-}
+changeSize.addEventListener("click", function() {
+    let usersChoice = prompt(`"How man squares per side would you like? (maximum length is 100)`);
+    // let elements = document.getElementsByClassName("square");
+    // for(let r = 0; r < elements.length; r++) {
+    //     elements[i].style.backgroundColor = "white";
+    // }
+    if(parseInt(usersChoice) > 100) {
+        return 100;
+    } else {
+        return parseInt(usersChoice)
+    }
+});
+
+
+
+
 
 generateGrid(16);
