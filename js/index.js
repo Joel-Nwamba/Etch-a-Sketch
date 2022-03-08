@@ -35,16 +35,17 @@ function generateGrid(size) {
 
 changeSize.addEventListener("click", function() {
     let usersChoice = prompt(`"How man squares per side would you like? (maximum length is 100)`);
-    // let elements = document.getElementsByClassName("square");
-    // for(let r = 0; r < elements.length; r++) {
-    //     elements[i].style.backgroundColor = "white";
-    // }
+    while(container.firstChild) {
+        container.removeChild(container.lastChild)
+    }
+    generateGrid(usersChoice)
     if(parseInt(usersChoice) > 100) {
         return 100;
     } else {
         return parseInt(usersChoice)
     }
 });
+
 
 
 
