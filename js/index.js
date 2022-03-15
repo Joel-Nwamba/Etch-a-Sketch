@@ -2,33 +2,30 @@ const container = document.getElementById("container");
 const clearButton = document.getElementById("clear-grid");
 const changeSize = document.getElementById("size");
 const square = document.createElement("div");
-// let row = 16;
-// let col = 16;
-// container.style.gridTemplateColumns = (`repeat( ${sizeLength}, 1fr)`)
 // create a grid 
 function generateGrid(size) {
+    let containerSize = Number(960);
+    let gridSize = Number(size);
     for(let i=0; i < size; i++) {
         const rowcol = document.createElement("div");
         rowcol.classList.add("row")
             for(let i = 0; i < size; i++) {
                 const square = document.createElement("div");
                 square.setAttribute("class", "square");
+                square.style.height = `${(containerSize/gridSize)}px`;
+                square.style.width = `${(containerSize/gridSize)}px`;
                 square.addEventListener("mouseover", () => {
                         square.style.backgroundColor = "black";
                     })
                 clearButton.addEventListener("click", function() {
                     square.style.backgroundColor = "white";
-                    // let usersInput = prompt(`"How many squares per side you'd like for the new grid? (max:64)"`);
-                    // if(usersInput > 64) {
-                    //     alert("Please enter a lesser number.")
-                    // } else {
-                    //     return size;
-                    // }
                 })
                 
                 rowcol.appendChild(square)
             }
-            container.appendChild(rowcol)
+            container.appendChild(rowcol);
+            // container.style.setProperty('grid-template-columns', `repeat(${size}, 2fr)`);
+            // container.style.setProperty('grid-template-rows', `repeat(${size}, 2fr)`);
     }
 
 }
@@ -38,12 +35,13 @@ changeSize.addEventListener("click", function() {
     while(container.firstChild) {
         container.removeChild(container.lastChild)
     }
-    generateGrid(usersChoice)
+     generateGrid(usersChoice)
     if(parseInt(usersChoice) > 100) {
         return 100;
     } else {
         return parseInt(usersChoice)
     }
+    
 });
 
 
