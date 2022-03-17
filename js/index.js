@@ -1,11 +1,11 @@
 const container = document.getElementById("container");
-const clearButton = document.getElementById("clear-grid");
-const changeSize = document.getElementById("size");
+const clearButton = document.getElementById("btn-clear-grid");
+const changeSize = document.getElementById("btn-size");
 const square = document.createElement("div");
-const colorChange = document.getElementById("change-color");
+const colorChange = document.getElementById("btn-change-color");
 // create a grid 
 function generateGrid(size) {
-    let containerSize = Number(960);
+    let containerSize = Number(500);
     let gridSize = Number(size);
     for(let i=0; i < size; i++) {
         const rowcol = document.createElement("div");
@@ -40,7 +40,7 @@ function changeGridColor(event) {
     let b = Math.floor(Math.random() * 256);
     let c = Math.floor(Math.random() * 256);
     event.target.style.backgroundColor = `rgb(${a}, ${b}, ${c})`;
-    event.target.style.opacity = 0.1;
+    event.target.style.opacity = 0.5;
 }
 
 
